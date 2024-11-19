@@ -1,19 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Pet } from './pet.entity';
 
 @Entity({ name: 'alarme' })
 export class Alarme {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'pet_id' })
-  petId: number;
+  @Column({ name: 'tipo_alarme' })
+  tipoAlarme: string;
+
+  @Column({ name: 'horario', type: 'timestamp' })
+  horario: Date;
 
   @Column()
-  raca: string;
+  status: string;
 
-  @Column()
-  idade: number;
-
-  @Column({ type: 'decimal' })
-  peso: number;
+  @ManyToOne(() => Pet)
+  @JoinColumn({ name: 'pet_id' })
+  pet: Pet;
 }

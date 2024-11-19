@@ -5,21 +5,21 @@ export class Pedido {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'data_pedido', type: 'datetime' })
+  @Column({ name: 'data_pedido', type: 'timestamp' })
   dataPedido: Date;
 
-  @Column({ name: 'status_pedido', length: 20, nullable: true })
+  @Column({ name: 'status_pedido' })
   statusPedido: string;
 
-  @Column({ name: 'nivel_estoque', type: 'decimal', precision: 5, scale: 2, nullable: true })
+  @Column({ name: 'nivel_estoque', type: 'decimal' })
   nivelEstoque: number;
 
-  @Column({ name: 'preco_selecionado', type: 'decimal', precision: 8, scale: 2, nullable: true })
+  @Column({ name: 'preco_selecionado', type: 'decimal' })
   precoSelecionado: number;
 
-  @Column({ name: 'horario_entrega', type: 'datetime', nullable: true })
+  @Column({ name: 'horario_entrega', type: 'timestamp' })
   horarioEntrega: Date;
 
-  @Column({ name: 'fornecedor', length: 50, nullable: true })
+  @Column({ name: 'fornecedor' })
   fornecedor: string;
 }

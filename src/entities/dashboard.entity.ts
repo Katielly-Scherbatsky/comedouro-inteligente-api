@@ -6,13 +6,13 @@ export class Dashboard {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'racao_restante', type: 'decimal', precision: 5, scale: 2, nullable: true })
+  @Column({ name: 'racao_restante' })
   racaoRestante: number;
 
-  @Column({ name: 'alertas', type: 'text', nullable: true })
+  @Column({ name: 'alertas' })
   alertas: string;
 
-  @Column({ name: 'status_comedouro', length: 20, nullable: true })
+  @Column({ name: 'status_comedouro' })
   statusComedouro: string;
 
   @ManyToOne(() => Pet)

@@ -6,10 +6,10 @@ export class Comedouro {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'datetime' })
+  @Column({ type: 'timestamp' })
   data: Date;
 
-  @Column({ name: 'status_tampa', length: 20, nullable: true })
+  @Column({ name: 'status_tampa' })
   statusTampa: string;
 
   @ManyToOne(() => Pet)

@@ -14,6 +14,6 @@ export class Pet {
   @Column({ nullable: true })
   idade: number;
 
-  @Column({ type: 'decimal', precision: 5, scale: 2, nullable: true })
+  @Column({ type: 'decimal' })
   peso: number;
 }

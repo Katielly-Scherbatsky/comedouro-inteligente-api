@@ -6,16 +6,16 @@ export class Alimentacao {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'datetime' })
+  @Column({ type: 'timestamp' })
   data: Date;
 
-  @Column({ name: 'status_alimentacao', length: 20, nullable: true })
+  @Column({ name: 'status_alimentacao' })
   statusAlimentacao: string;
 
-  @Column({ name: 'tempo_tampa_aberta', type: 'decimal', precision: 5, scale: 2, nullable: true })
+  @Column({ name: 'tempo_tampa_aberta' })
   tempoTampaAberta: number;
 
-  @Column({ name: 'pet_id', length: 20, nullable: true })
+  @Column({ name: 'pet_id' })
   petId: number;
 
   @ManyToOne(() => Pet)
