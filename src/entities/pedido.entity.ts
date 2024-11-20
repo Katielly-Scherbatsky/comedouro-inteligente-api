@@ -20,6 +20,6 @@ export class Pedido {
   @Column({ name: 'horario_entrega', type: 'timestamp' })
   horarioEntrega: Date;
 
-  @Column({ name: 'fornecedor' })
+  @Column()
   fornecedor: string;
 }

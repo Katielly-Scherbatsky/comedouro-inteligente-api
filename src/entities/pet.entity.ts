@@ -5,13 +5,13 @@ export class Pet {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 50 })
+  @Column()
   nome: string;
 
-  @Column({ length: 50, nullable: true })
+  @Column()
   raca: string;
 
-  @Column({ nullable: true })
+  @Column()
   idade: number;
 
   @Column({ type: 'decimal' })

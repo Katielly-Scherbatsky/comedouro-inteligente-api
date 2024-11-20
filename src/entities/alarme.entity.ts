@@ -9,7 +9,7 @@ export class Alarme {
   @Column({ name: 'tipo_alarme' })
   tipoAlarme: string;
 
-  @Column({ name: 'horario', type: 'timestamp' })
+  @Column({ type: 'timestamp' })
   horario: Date;
 
   @Column()

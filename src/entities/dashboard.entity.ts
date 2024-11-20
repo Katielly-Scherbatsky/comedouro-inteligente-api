@@ -9,7 +9,7 @@ export class Dashboard {
   @Column({ name: 'racao_restante' })
   racaoRestante: number;
 
-  @Column({ name: 'alertas' })
+  @Column()
   alertas: string;
 
   @Column({ name: 'status_comedouro' })
