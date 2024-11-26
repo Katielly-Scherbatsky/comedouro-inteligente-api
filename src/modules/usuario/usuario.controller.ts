@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import { PetService } from './pet.service';
+import { PetService } from './usuario.service';
 import { Pet } from '../../entities/pet.entity';
 
 @Controller('pets')
