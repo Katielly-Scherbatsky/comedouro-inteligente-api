@@ -56,12 +56,11 @@ O projeto está dividido em duas partes principais:
 #### 1. Clone o repositório:
 ```bash
 git clone https://github.com/seu-usuario/comedouro-inteligente.git
-cd comedouro-inteligente
+cd comedouro-inteligente-api
 ```
 
 #### 2. Configuração do Server:
 ```bash
-cd server
 npm install
 ```
 
@@ -74,11 +73,6 @@ SUPABASE_KEY=seu_supabase_key
 - Execute o servidor:
 ```bash
 npm run start:dev
-```
-
-#### 3. Configuração do Client:
-```bash
-cd ../client
 ```
 
 ## Funcionalidades
