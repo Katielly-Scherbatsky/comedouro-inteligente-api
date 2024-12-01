@@ -54,4 +54,5 @@ export class SerialService implements OnModuleInit {
       }
     }
   }
+  
 }
