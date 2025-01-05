@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
-import { Pet } from './pet.entity';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Comedouro } from './comedouro.entity';
+import { Produto } from './produto.entity';
 
 @Entity({ name: 'alimentacao' })
 export class Alimentacao {
@@ -7,18 +8,25 @@ export class Alimentacao {
   id: number;
 
   @Column({ type: 'timestamp' })
-  data: Date;
+  data: string;
 
-  @Column({ name: 'status_alimentacao' })
-  statusAlimentacao: string;
+  @Column()
+  status: string;
 
   @Column({ name: 'tempo_tampa_aberta' })
   tempoTampaAberta: number;
 
-  @Column({ name: 'pet_id' })
-  petId: number;
+  @Column({ name: 'produto_id' })
+  produtoId: number;
 
-  @ManyToOne(() => Pet)
-  @JoinColumn({ name: 'pet_id' })
-  pet: Pet;
+  @Column({ name: 'comedouro_id' })
+  comedouroId: number;
+
+  @OneToOne(() => Comedouro)
+  @JoinColumn({ name: 'id' })
+  comedouro: Comedouro;
+
+  @OneToOne(() => Produto)
+  @JoinColumn({ name: 'id' })
+  produto: Produto;
 }

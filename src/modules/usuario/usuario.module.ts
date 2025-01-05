@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PetService } from './usuario.service';
-import { PetController } from './usuario.controller';
-import { Pet } from '../../entities/pet.entity';
+import { Usuario } from '../../entities/usuario.entity';
+import { UsuarioController } from './usuario.controller';
+import { UsuarioService } from './usuario.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Pet]), // Registra o repositório de Pet no módulo
+    TypeOrmModule.forFeature([Usuario]), // Registra o repositório de Usuario no módulo
   ],
-  providers: [PetService],
-  controllers: [PetController],
+  providers: [UsuarioService],
+  controllers: [UsuarioController],
 })
-export class PetModule {}
+export class UsuarioModule {}

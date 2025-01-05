@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ComedouroService } from './comedouro.service';
-import { ComedouroController } from './comedouro.controller';
 import { Comedouro } from '../../entities/comedouro.entity';
+import { ComedouroController } from './comedouro.controller';
+import { ComedouroService } from './comedouro.service';
 
 @Module({
   imports: [

@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { ComedouroService } from './comedouro.service';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Comedouro } from '../../entities/comedouro.entity';
+import { ComedouroService } from './comedouro.service';
 
 @Controller('comedouro')
 export class ComedouroController {

@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Usuario } from './usuario.entity';
 
 @Entity({ name: 'pet' })
 export class Pet {
@@ -14,6 +15,13 @@ export class Pet {
   @Column()
   idade: number;
 
+  @Column({ name: 'usuario_id' })
+  usuarioId: number;
+
   @Column({ type: 'decimal' })
   peso: number;
+
+  @OneToOne(() => Usuario)
+  @JoinColumn({ name: 'id' })
+  usuario: Usuario;
 }

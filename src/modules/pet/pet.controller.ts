@@ -2,11 +2,11 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { PetService } from './pet.service';
 import { Pet } from '../../entities/pet.entity';
 
-@Controller('pets')
+@Controller('pet')
 export class PetController {
   constructor(private readonly petService: PetService) {}
 
-  @Get()
+  @Get('/listar')
   findAll(): Promise<Pet[]> {
     return this.petService.findAll();
   }

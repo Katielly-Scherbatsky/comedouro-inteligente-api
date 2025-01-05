@@ -2,22 +2,13 @@ import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'ty
 import { Fornecedor } from './fornecedor.entity';
 import { Produto } from './produto.entity';
 
-@Entity({ name: 'pedido' })
-export class Pedido {
+@Entity({ name: 'produto_fornecedor' })
+export class ProdutoFornecedor {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'timestamp' })
-  data: string;
-
-  @Column()
-  status: string;
-
   @Column({ name: 'produto_id' })
   produtoId: number;
-
-  @Column({ type: 'decimal' })
-  preco: number;
 
   @Column({ name: 'fornecedor_id' })
   fornecedorId: number;

@@ -1,18 +1,18 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { PetService } from './usuario.service';
-import { Pet } from '../../entities/pet.entity';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Usuario } from '../../entities/usuario.entity';
+import { UsuarioService } from './usuario.service';
 
-@Controller('pets')
-export class PetController {
-  constructor(private readonly petService: PetService) {}
+@Controller('usuario')
+export class UsuarioController {
+  constructor(private readonly usuarioService: UsuarioService) {}
 
   @Get()
-  findAll(): Promise<Pet[]> {
-    return this.petService.findAll();
+  findAll(): Promise<Usuario[]> {
+    return this.usuarioService.findAll();
   }
 
   @Post('/inserir')
-  create(@Body() pet: Pet): Promise<Pet> {
-    return this.petService.create(pet);
+  create(@Body() usuario: Usuario): Promise<Usuario> {
+    return this.usuarioService.create(usuario);
   }
 }

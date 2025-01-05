@@ -1,54 +1,105 @@
-Tabela Pet
-CREATE TABLE Pet (
-ID_Pet INT PRIMARY KEY AUTO_INCREMENT,
-Nome VARCHAR(50) NOT NULL,
-Raca VARCHAR(50),
-Idade INT,
-Peso DECIMAL(5,2) );
-
-Tabela Alimentacao
-CREATE TABLE Alimentacao (
-ID_Alimentacao INT PRIMARY KEY AUTO_INCREMENT,
-ID_Pet INT,
-Data DATETIME NOT NULL,
-Status_Alimentacao VARCHAR(20), --Por exemplo, 'Comido' ou 'Não comido'
-Tempo_Tampa_Abriu DECIMAL(5,2), -- Tempo que a tampa ficou aberta em segundos
-FOREIGN KEY (ID_Pet) REFERENCES Pet(ID_Pet));
-
-Tabela Pedido
-CREATE TABLE Pedido (
-ID_Pedido INT PRIMARY KEY AUTO_INCREMENT, Data_Pedido DATETIME NOT NULL,
-Status_Pedido VARCHAR(20),
-Nivel_Estoque DECIMAL(5,2),
-Preco_Selecionado DECIMAL(8,2),
-Horario_Entrega DATETIME,
-Fornecedor VARCHAR(50));
-
-Tabela Comedouro
-CREATE TABLE Comedouro (
- ID_Comedouro INT PRIMARY KEY AUTO_INCREMENT,
- ID_Pet INT,
- Data DATETIME NOT NULL,
- Status_Tampa VARCHAR(20),  -- Ex.: 'Aberta' ou 'Fechada'
- FOREIGN KEY (ID_Pet) REFERENCES Pet(ID_Pet));
-
-Tabela Dashboard
-CREATE TABLE Dashboard (
-    ID_Dashboard INT PRIMARY KEY AUTO_INCREMENT,
-    ID_Pet INT,
-    Racao_Restante DECIMAL(5,2),
-    Alertas TEXT,
-    Status_Comedouro VARCHAR(20),
-    FOREIGN KEY (ID_Pet) REFERENCES Pet(ID_Pet)
+Tabela Usuario
+CREATE TABLE usuario (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    senha VARCHAR(50) NOT NULL
 );
 
+Tabela Pet
+CREATE TABLE pet (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id VARCHAR(50) NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    raca VARCHAR(50),
+    idade INT,
+    peso DECIMAL(5,2))
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
+Tabela Comedouro
+CREATE TABLE comedouro (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    pet_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    data DATETIME NOT NULL,
+    status INT NOT NULL,  -- Ex.: 'Cheio' ou 'Vazio'
+    situacao_tampa INT NOT NULL,  -- Ex.: 'Aberta' ou 'Fechada'
+    FOREIGN KEY (pet_id) REFERENCES pet(id),
+    FOREIGN KEY (produto_id) REFERENCES produto(id)
+);
+
+Tabela Alimentacao
+    CREATE TABLE alimentacao (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    comedouro_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    data DATETIME NOT NULL,
+    status INT NOT NULL, --Por exemplo, 'Comido' ou 'Não comido'
+    tempo_tampa_aberta DECIMAL(5,2),
+    FOREIGN KEY (comedouro_id) REFERENCES comedouro(id),
+    FOREIGN KEY (produto_id) REFERENCES produto(id)
+);
+
+Tabela Pedido
+CREATE TABLE pedido (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    data DATETIME NOT NULL,
+    status INT,
+    produto_id INT NOT NULL,
+    preco DECIMAL(8,2),
+    fornecedor_id INT NOT NULL,
+    FOREIGN KEY (produto_id) REFERENCES produto(id),
+    FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id)
+);
 
 Tabela Alarme
-CREATE TABLE Alarme (
-    ID_Alarme INT PRIMARY KEY AUTO_INCREMENT,
-    ID_Pet INT,
-    Tipo_Alarme VARCHAR(50),  -- Por exemplo, 'Refeição', 'Erro'
-    Horario DATETIME NOT NULL,
-    Estado VARCHAR(20),  -- Ex.: 'Ativo' ou 'Inativo'
-    FOREIGN KEY (ID_Pet) REFERENCES Pet(ID_Pet)
+CREATE TABLE alarme (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    comedouro_id INT NOT NULL,
+    tipo_alarme VARCHAR(50) NOT NULL,  -- Por exemplo, 'Refeição', 'Erro'
+    data DATETIME NOT NULL,
+    status INT NOT NULL,  -- Ex.: 'Ativo' ou 'Inativo'
+    FOREIGN KEY (comedouro_id) REFERENCES comedouro(id)
+);
+
+Tabela Produto
+CREATE TABLE produto (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    estoque INT NOT NULL,
+    preco DECIMAL(8,2),
+);
+
+Tabela Produto Fornecedor
+CREATE TABLE produto_fornecedor (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fornecedor_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    FOREIGN KEY (produto_id) REFERENCES produto(id)
+);
+
+Tabela Fornecedor
+CREATE TABLE fornecedor (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    endereco VARCHAR(50) NOT NULL,
+    tempo_entrega VARCHAR(50),
+);
+
+Tabela Opções
+CREATE TABLE opcoes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    descricao VARCHAR(50) NOT NULL,
+    tipo INT NOT NULL,
+);
+
+Tabela Opção Item
+CREATE TABLE opcaco_item (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    descricao VARCHAR(50) NOT NULL,
+    opcoes_id INT NOT NULL,
+    FOREIGN KEY (opcoes_id) REFERENCES opcoes(id)
 );

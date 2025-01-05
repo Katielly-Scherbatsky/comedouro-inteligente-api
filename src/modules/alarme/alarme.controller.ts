@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { AlarmeService } from './alarme.service';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Alarme } from '../../entities/alarme.entity';
+import { AlarmeService } from './alarme.service';
 
-@Controller('alarmes')
+@Controller('alarme')
 export class AlarmeController {
   constructor(private readonly alarmeService: AlarmeService) {}
 

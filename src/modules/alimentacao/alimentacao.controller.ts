@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { AlimentacaoService } from './alimentacao.service';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Alimentacao } from '../../entities/alimentacao.entity';
+import { AlimentacaoService } from './alimentacao.service';
 
 @Controller('alimentacao')
 export class AlimentacaoController {

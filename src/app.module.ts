@@ -2,18 +2,19 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Pet } from './entities/pet.entity';
-import { PetModule } from './modules/pet/pet.module';
+import { AuthModule } from './auth/auth.module';
 import { Alarme } from './entities/alarme.entity';
-import { AlarmeModule } from './modules/alarme/alarme.module';
 import { Alimentacao } from './entities/alimentacao.entity';
-import { AlimentacaoModule } from './modules/alimentacao/alimentacao.module';
 import { Comedouro } from './entities/comedouro.entity';
-import { ComedouroModule } from './modules/comedouro/comedouro.module';
-import { Dashboard } from './entities/dashboard.entity';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { Pedido } from './entities/pedido.entity';
+import { Pet } from './entities/pet.entity';
+import { Produto } from './entities/produto.entity';
+import { AlarmeModule } from './modules/alarme/alarme.module';
+import { AlimentacaoModule } from './modules/alimentacao/alimentacao.module';
+import { ComedouroModule } from './modules/comedouro/comedouro.module';
 import { PedidoModule } from './modules/pedido/pedido.module';
+import { PetModule } from './modules/pet/pet.module';
+import { ProdutoModule } from './modules/produto/produto.module';
 
 @Module({
   imports: [
@@ -24,16 +25,17 @@ import { PedidoModule } from './modules/pedido/pedido.module';
       username: 'postgres.emubutxtgghgqhmsacqh',
       password: 'Comedouro123456@',
       database: 'postgres',
-      entities: [Pet, Alarme, Alimentacao, Comedouro, Dashboard, Pedido],
+      entities: [Pet, Alarme, Alimentacao, Comedouro, Produto, Pedido],
       synchronize: false,
     }),
-    TypeOrmModule.forFeature([Pet, Alarme, Alimentacao, Comedouro, Dashboard, Pedido]),
+    TypeOrmModule.forFeature([Pet, Alarme, Alimentacao, Comedouro, Produto, Pedido]),
     PetModule,
     AlarmeModule,
     AlimentacaoModule,
     ComedouroModule,
-    DashboardModule,
+    ProdutoModule,
     PedidoModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Pet } from '../../entities/pet.entity';
+import { Usuario } from '../../entities/usuario.entity';
 
 @Injectable()
-export class PetService {
+export class UsuarioService {
   constructor(
-    @InjectRepository(Pet)
-    private usuarioRepository: Repository<Pet>,
+    @InjectRepository(Usuario)
+    private usuarioRepository: Repository<Usuario>,
   ) {}
 
-  findAll(): Promise<Pet[]> {
+  findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find();
   }
 
-  create(pet: Pet): Promise<Pet> {
-    return this.usuarioRepository.save(pet);
+  create(usuario: Usuario): Promise<Usuario> {
+    return this.usuarioRepository.save(usuario);
   }
 }
