@@ -1,17 +1,18 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Alarme } from '../../entities/alarme.entity';
-import { AlarmeService } from './alarme.service';
+import { Body, Controller, Get, Post, Request } from "@nestjs/common";
+import { Alarme } from "../../entities/alarme.entity";
+import { listarAlarmeDto } from "./alarme.dto";
+import { AlarmeService } from "./alarme.service";
 
-@Controller('alarme')
+@Controller("alarme")
 export class AlarmeController {
   constructor(private readonly alarmeService: AlarmeService) {}
 
-  @Get()
-  findAll(): Promise<Alarme[]> {
-    return this.alarmeService.findAll();
+  @Get("/listar")
+  findAll(payload: listarAlarmeDto, @Request() req): Promise<Alarme[]> {
+    return this.alarmeService.findAll(payload, req.user.sub);
   }
 
-  @Post()
+  @Post("/inserir")
   create(@Body() alarme: Alarme): Promise<Alarme> {
     return this.alarmeService.create(alarme);
   }

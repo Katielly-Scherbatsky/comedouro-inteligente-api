@@ -1,16 +1,17 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Pedido } from '../../entities/pedido.entity';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Pedido } from "../../entities/pedido.entity";
+import { listarPedidoDto } from "./pedido.dto";
 
 @Injectable()
 export class PedidoService {
   constructor(
     @InjectRepository(Pedido)
-    private pedidoRepository: Repository<Pedido>,
+    private pedidoRepository: Repository<Pedido>
   ) {}
 
-  findAll(): Promise<Pedido[]> {
+  findAll(payload: listarPedidoDto, usuarioId: number): Promise<Pedido[]> {
     return this.pedidoRepository.find();
   }
 
