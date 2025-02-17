@@ -2,7 +2,6 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-// import { AuthModule } from './auth/auth.module';
 import { Alarme } from "./entities/alarme.entity";
 import { Alimentacao } from "./entities/alimentacao.entity";
 import { Comedouro } from "./entities/comedouro.entity";
@@ -66,7 +65,6 @@ import { AuthModule } from "./auth/auth.module";
     ProdutoFornecedorModule,
     UsuarioModule,
     AuthModule,
-    // AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

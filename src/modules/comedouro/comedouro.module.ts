@@ -6,7 +6,7 @@ import { ComedouroService } from './comedouro.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Comedouro]), // Registra o repositório de Comedouro no módulo
+    TypeOrmModule.forFeature([Comedouro]),
   ],
   providers: [ComedouroService],
   controllers: [ComedouroController],

@@ -6,7 +6,7 @@ import { PedidoService } from './pedido.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Pedido]), // Registra o repositório de Pedido no módulo
+    TypeOrmModule.forFeature([Pedido]),
   ],
   providers: [PedidoService],
   controllers: [PedidoController],

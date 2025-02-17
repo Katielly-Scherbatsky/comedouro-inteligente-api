@@ -32,7 +32,6 @@ export class PetService {
   }
 
   async excluir(id: number, usuarioId: number): Promise<void> {
-    // Verifica se o pet pertence ao usuário antes de excluir
     const pet = await this.petRepository.findOneBy({ id, usuarioId });
     if (!pet) {
       throw new Error(

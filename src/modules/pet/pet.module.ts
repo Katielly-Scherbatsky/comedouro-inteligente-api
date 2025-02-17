@@ -6,7 +6,7 @@ import { PetService } from './pet.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Pet]), // Registra o repositório de Pet no módulo
+    TypeOrmModule.forFeature([Pet]),
   ],
   providers: [PetService],
   controllers: [PetController],

@@ -12,42 +12,6 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  // async login(email, senha) {
-  //   const usuario = await this.usuarioRepository.findOneBy({
-  //     email: email,
-  //   });
-
-  //   if (!usuario) {
-  //     throw new Error("Usuário ou senha inválida");
-  //   }
-
-  //   const senhaValida = await criptografia.comparar(senha, usuario.senha);
-
-  //   if (!senhaValida) {
-  //     throw new Error("Usuário ou senha inválida");
-  //   }
-
-  //   const token = jwt.sign(
-  //     {
-  //       sub: usuario.id,
-  //       email: usuario.email,
-  //     },
-  //     process.env.JWT_SECRET,
-  //     {
-  //       expiresIn: process.env.JWT_EXPIRES_IN,
-  //     }
-  //   );
-
-  //   return {
-  //     usuario: {
-  //       id: usuario.id,
-  //       nome: usuario.nome,
-  //       email: usuario.email,
-  //     },
-  //     token,
-  //   };
-  // }
-
   async login(
     email: string,
     senha: string

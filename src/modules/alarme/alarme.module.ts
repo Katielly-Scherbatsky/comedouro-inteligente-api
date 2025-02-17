@@ -6,7 +6,7 @@ import { AlarmeService } from './alarme.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Alarme]), // Registra o repositório de Alarme no módulo
+    TypeOrmModule.forFeature([Alarme]),
   ],
   providers: [AlarmeService],
   controllers: [AlarmeController],

@@ -6,7 +6,7 @@ import { FornecedorService } from "./fornecedor.service";
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Fornecedor]), // Registra o repositório de Fornecedor no módulo
+    TypeOrmModule.forFeature([Fornecedor]),
   ],
   providers: [FornecedorService],
   controllers: [FornecedorController],

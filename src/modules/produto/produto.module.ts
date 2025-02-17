@@ -6,7 +6,7 @@ import { ProdutoService } from './produto.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Produto]), // Registra o repositório de Produto no módulo
+    TypeOrmModule.forFeature([Produto]),
   ],
   providers: [ProdutoService],
   controllers: [ProdutoController],

@@ -6,7 +6,7 @@ import { AlimentacaoService } from './alimentacao.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Alimentacao]), // Registra o repositório de Alimentacao no módulo
+    TypeOrmModule.forFeature([Alimentacao]),
   ],
   providers: [AlimentacaoService],
   controllers: [AlimentacaoController],
