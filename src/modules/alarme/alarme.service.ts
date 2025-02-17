@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Alarme } from "../../entities/alarme.entity";
-import { listarAlarmeDto } from "./alarme.dto";
+import { criarAlarmeDto, listarAlarmeDto } from "./alarme.dto";
 
 @Injectable()
 export class AlarmeService {
@@ -11,11 +11,15 @@ export class AlarmeService {
     private alarmeRepository: Repository<Alarme>
   ) {}
 
-  findAll(payload: listarAlarmeDto, usuarioId: number): Promise<Alarme[]> {
-    return this.alarmeRepository.find();
+  findAll(payload: listarAlarmeDto): Promise<Alarme[]> {
+    return this.alarmeRepository.find({
+      where: {
+        usuarioId: payload.usuarioId,
+      },
+    });
   }
 
-  create(alarme: Alarme): Promise<Alarme> {
-    return this.alarmeRepository.save(alarme);
+  create(payload: criarAlarmeDto): Promise<Alarme> {
+    return this.alarmeRepository.save(payload);
   }
 }

@@ -8,5 +8,13 @@ export class criarUsuarioDto {
   email: string;
 
   @IsNotEmpty()
-  password: string;
+  senha: string;
+}
+
+export class editarUsuarioDto {
+  @IsNotEmpty()
+  nome: string;
+
+  @IsEmail()
+  email: string;
 }

@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
 import { Usuario } from "../../entities/usuario.entity";
+import { criarUsuarioDto, editarUsuarioDto } from "./usuario.dto";
 import { UsuarioService } from "./usuario.service";
-import { criarUsuarioDto } from "./usuario.dto";
 
 @Controller("usuario")
 export class UsuarioController {
@@ -15,5 +15,13 @@ export class UsuarioController {
   @Post("/inserir")
   create(@Body() payload: criarUsuarioDto): Promise<Usuario> {
     return this.usuarioService.create(payload);
+  }
+
+  @Put("/editar/:id")
+  async editar(
+    @Param("id") id: number,
+    @Body() payload: editarUsuarioDto
+  ): Promise<Usuario> {
+    return this.usuarioService.editar(id, { ...payload });
   }
 }

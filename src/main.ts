@@ -14,12 +14,14 @@ async function bootstrap() {
     })
   );
 
+  // Habilita o CORS para todas as origens
   app.enableCors({
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   });
 
+  // Torna a pasta 'uploads' acessível
   app.use("/uploads", express.static(join(__dirname, "..", "uploads")));
 
   await app.listen(3001);

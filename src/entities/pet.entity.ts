@@ -21,6 +21,9 @@ export class Pet {
   @Column()
   idade: number;
 
+  @Column()
+  tipo: number;
+
   @Column({ name: "usuario_id" })
   usuarioId: number;
 

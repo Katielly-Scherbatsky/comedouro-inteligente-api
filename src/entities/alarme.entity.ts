@@ -24,10 +24,10 @@ export class Alarme {
   data: string;
 
   @Column()
-  status: string;
+  status: number;
 
   @Column({ name: "comedouro_id" })
-  comedouroId: string;
+  comedouroId: number;
 
   @Column({ name: "usuario_id" })
   usuarioId: number;
