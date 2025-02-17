@@ -7,13 +7,8 @@ import {
   Post,
   Put,
   Request,
-  UploadedFile,
   UseGuards,
-  UseInterceptors,
 } from "@nestjs/common";
-import { FileInterceptor } from "@nestjs/platform-express";
-import { diskStorage } from "multer";
-import { extname } from "path";
 import { AuthGuard } from "../../auth/auth.guard";
 import { Pet } from "../../entities/pet.entity";
 import { criarPetDto, editarPetDto, listarPetDto } from "./pet.dto";
@@ -30,17 +25,13 @@ export class PetController {
   }
 
   @Post("/inserir")
-  async create(
-    @UploadedFile() file: Express.Multer.File,
-    @Body() payload: criarPetDto
-  ): Promise<Pet> {
+  async create(@Body() payload: criarPetDto): Promise<Pet> {
     return this.petService.create({ ...payload });
   }
 
   @Put("/editar/:id")
   async editar(
     @Param("id") id: number,
-    @UploadedFile() file: Express.Multer.File,
     @Body() payload: editarPetDto
   ): Promise<Pet> {
     return this.petService.editar(id, { ...payload });

@@ -51,3 +51,29 @@ export class listarAlarmeDto {
   @IsNumber()
   usuarioId?: number;
 }
+
+export class editarAlarmeDto {
+  @IsNotEmpty()
+  @IsString()
+  nome: string;
+
+  @IsString()
+  @IsOptional()
+  tipoAlarme: string;
+
+  @IsString()
+  @IsOptional()
+  data: string;
+
+  @IsNumber()
+  @IsOptional()
+  status: number;
+
+  @IsNotEmpty()
+  @IsNumber()
+  comedouroId: number;
+
+  @IsNotEmpty()
+  @IsNumber()
+  usuarioId: number;
+}

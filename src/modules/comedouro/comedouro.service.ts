@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Comedouro } from '../../entities/comedouro.entity';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Comedouro } from "../../entities/comedouro.entity";
 
 @Injectable()
 export class ComedouroService {
   constructor(
     @InjectRepository(Comedouro)
-    private comededouroRepository: Repository<Comedouro>,
+    private comededouroRepository: Repository<Comedouro>
   ) {}
 
   findAll(): Promise<Comedouro[]> {

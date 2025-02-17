@@ -13,6 +13,7 @@ CREATE TABLE pet (
     nome VARCHAR(50) NOT NULL,
     raca VARCHAR(50),
     idade INT,
+    tipo INT,
     peso DECIMAL(5,2))
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)
 );

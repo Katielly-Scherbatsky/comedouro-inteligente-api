@@ -33,10 +33,10 @@ export class Alarme {
   usuarioId: number;
 
   @ManyToOne(() => Comedouro)
-  @JoinColumn({ name: "id" })
+  @JoinColumn({ name: "comedouro_id", referencedColumnName: "id" })
   comedouro: Comedouro;
 
   @OneToOne(() => Usuario)
-  @JoinColumn({ name: "id" })
+  @JoinColumn({ name: "usuario_id", referencedColumnName: "id" })
   usuario: Usuario;
 }
